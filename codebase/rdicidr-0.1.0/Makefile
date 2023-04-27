@@ -1,8 +1,9 @@
 appname = fsl
 
 account = petenka150
-stage = dev
+stage = prod
 include configs/$(stage)
+
 
 build:
 	docker build -t $(account)/$(appname):$(version) .
@@ -21,4 +22,4 @@ deploy: push
 		--set hostname=$(hostname)
 		--set image.repository=$(account)/$(appname) \
 		--set image.tag=$(version)
-		
+
