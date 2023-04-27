@@ -1,0 +1,4 @@
+version = 1.0
+namespace = staging
+replicas = 1
+hostname = fsl-challenge.me

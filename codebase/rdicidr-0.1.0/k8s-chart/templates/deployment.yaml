@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.applicationName }}
+  labels:
+    app: {{ .Values.applicationName }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.applicationName }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.applicationName }}
+    spec:
+      containers:
+      - name: {{ .Values.applicationName }}
+        image: petenka150/fsl:1.0
+        ports:
+        - containerPort: 8080
+        env:
+        - name: MY_SECRET
+          valueFrom:
+            secretKeyRef:
+              name: "{{ .Values.applicationName }}-secret"
+              key: MY_SECRET

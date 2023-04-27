@@ -1,0 +1,4 @@
+version = 1.1
+namespace = dev
+replicas = 1
+hostname = fsl-challenge.me

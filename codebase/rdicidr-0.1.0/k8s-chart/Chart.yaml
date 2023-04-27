@@ -1,0 +1,6 @@
+apiVersion: v2
+name: app-deployment-chart
+description: A Helm chart for deploying stateless application into Kubernetes
+type: application
+# chart version, does not affect application version in this customization
+version: 0.1.0
