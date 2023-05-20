@@ -1,0 +1,29 @@
+name: Ci pipeline
+
+on:
+  pull_request:
+    branches:
+      -main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+  steps:
+  -name: Checkout code
+   uses: actions/checkout@v2
+
+  -name: install dependencies
+   run: npm install
+
+  -name: Linter (ESLint)
+   run: npm install
+ 
+  -name: Formatter (Prettier)
+   run: npm run prettier
+
+  -name: Test (Jest)
+   run: npm run test -- --ci
+
+  -name: Build
+  run: npm run build
