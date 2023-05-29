@@ -1,0 +1,29 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 15.5.1
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Linter (ESLint) 
+        run: npm run lint
+      
+      - name: Formatter (Prettier)
+        run: npm run prettier
+
+      - name: Test (Jest)
+        run: "CI=true npm run test"
+
+      - name: Build
+        run: npm run build
