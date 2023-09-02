@@ -1,24 +1,28 @@
 pipeline {
     agent none
     stages {
-      /*  stage('Git Checkout') {
+        stage('Git Checkout') {
             agent any
-            tools {
+/*            tools {
 
             }
             options {
                 // Timeout counter starts BEFORE agent is allocated
                // timeout(time: 1, unit: 'SECONDS')
-            }
+*/            
             steps {
-                git branch :'main',changelog: flase ,credentialsId:
+               git 
+                git branch :'main',changelog: flase ,credentialsId: '91a75276-ccff-4636-947d-940712d81400', url: 'https://github.com/nimanisha/Upwork.git'
             }
         }
-         stage('COMPILE') {        
+                
+        stage('COMPILE') {        
              steps {
-                git branch :'main',changelog: flase ,credentialsId:
+               sh "npm install"
+               sh "npm run lint"
+               sh "npm run prettier"
             }
-   */     
+        }
         stage('Dependency Scan') {        
              steps {
               DependencyCheck additionalArguments:'',odcInstallation: 'DP-check'
